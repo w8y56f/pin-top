@@ -1,0 +1,19 @@
+<resources>
+    <style name="ShareTheme" parent="android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+    <string name="app_name">PinTop</string>
+    <string name="description">%1$s\n\n%2$s</string>
+    <string name="intro">在相册选中图片或视频，分享给 PinTop 即可刷新文件修改时间。相册按修改时间排序时会显示在顶部。</string>
+    <string name="permission_help">允许读取照片和视频可以帮助 PinTop 找到相册分享的本地原件。Android 12 及以上可在系统设置中启用媒体管理权限，减少修改确认弹窗。</string>
+    <string name="allow_read">允许读取照片和视频</string>
+    <string name="manage_media">打开系统媒体管理设置</string>
+    <string name="settings_unavailable">此设备没有提供媒体管理设置</string>
+    <string name="result">已更新 %1$d 项 · 跳过 %2$d 项 · 失败 %3$d 项</string>
+    <string name="cancelled">已取消修改</string>
+    <string name="versioned_title">%1$s %2$s</string>
+</resources>
