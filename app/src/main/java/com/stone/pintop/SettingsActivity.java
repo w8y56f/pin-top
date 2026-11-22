@@ -37,7 +37,23 @@ public final class SettingsActivity extends Activity {
                 heading.length(), android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         title.setText(heading);
         title.setTextSize(28);
-        content.addView(title);
+        LinearLayout header = new LinearLayout(this);
+        header.setGravity(android.view.Gravity.CENTER_VERTICAL);
+        header.addView(title, new LinearLayout.LayoutParams(0, -2, 1));
+        android.widget.ImageButton about = new android.widget.ImageButton(this);
+        about.setImageResource(R.drawable.ic_settings);
+        about.setContentDescription(getString(R.string.about));
+        android.util.TypedValue background = new android.util.TypedValue();
+        getTheme().resolveAttribute(android.R.attr.selectableItemBackgroundBorderless, background, true);
+        about.setBackgroundResource(background.resourceId);
+        about.setOnClickListener(view -> new android.app.AlertDialog.Builder(this)
+                .setTitle(name)
+                .setMessage(getString(R.string.about_version, version))
+                .setPositiveButton(android.R.string.ok, null)
+                .show());
+        int buttonSize = Math.round(48 * getResources().getDisplayMetrics().density);
+        header.addView(about, buttonSize, buttonSize);
+        content.addView(header);
         TextView help = new TextView(this);
         help.setText(getString(R.string.description, getString(R.string.intro), getString(R.string.permission_help)));
         help.setPadding(0, padding / 2, 0, padding / 2);
@@ -69,6 +85,13 @@ public final class SettingsActivity extends Activity {
             });
             content.addView(manage);
         }
-        setContentView(content);
+        TextView note = new TextView(this);
+        note.setText(R.string.permission_note);
+        note.setTextColor(0xffb3261e);
+        note.setPadding(0, padding / 3, 0, 0);
+        content.addView(note);
+        android.widget.ScrollView scroll = new android.widget.ScrollView(this);
+        scroll.addView(content);
+        setContentView(scroll);
     }
 }
